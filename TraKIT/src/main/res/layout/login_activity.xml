@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="0dp"
+    android:screenOrientation="portrait"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/background"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/info"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:textSize="18sp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Space
+            android:layout_width="20px"
+            android:layout_height="250dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp">
+
+            <Space
+                android:layout_width="300dp"
+                android:layout_height="50dp" />
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/helpButton"
+                android:background="@null"
+                android:layout_weight="0"
+                android:src="@drawable/signup_screen_07"
+                android:scaleType="fitCenter" />
+        </LinearLayout>
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:textSize="18dp"
+            android:textStyle="normal"
+            android:layout_marginBottom="30dp" />
+
+        <!-- style="@style/FacebookLoginButton"-->
+
+
+        <ImageButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/signupButton"
+            android:src="@drawable/signup_screen_16"
+            android:background="#00fffefe"
+            android:layout_margin="0dp"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="0dp"
+            android:adjustViewBounds="true"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="50dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="By signing up,I agree to Workspike’s  "
+                        android:id="@+id/textView2"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:layout_marginLeft="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Terms of Service"
+                        android:id="@+id/termsofservice"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:textAlignment="center"
+                        android:textColor="#2b5ba8"
+                        android:autoLink="web"
+                        android:linksClickable="true" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="© 2016 workspike.com/trakit"
+                    android:id="@+id/workspikelink"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textAlignment="center"
+                    android:textColor="#2b5ba8"
+                    android:layout_marginTop="5dp"
+                    android:linksClickable="true"
+                    android:contextClickable="true"
+                    android:clickable="true" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <Space
+            android:layout_width="290dp"
+            android:layout_height="20px"
+            android:layout_marginTop="40dp" />
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/closeButton"
+            android:background="@null"
+            android:layout_weight="0.07"
+            android:src="@drawable/signup_screen_03"
+            android:scaleType="fitXY"
+            android:layout_margin="20dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

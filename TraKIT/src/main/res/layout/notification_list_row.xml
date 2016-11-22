@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_row_selector"
+    android:padding="8dp" >
+
+    <!-- Thumbnail Image -->
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/notification_thumbnail"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="8dp" />
+
+    <!-- Vehicle Title -->
+    <TextView
+        android:id="@+id/notification_no"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/vehicle_no"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/notification_thumbnail"
+        android:layout_toRightOf="@+id/notification_thumbnail"
+        android:layout_toEndOf="@+id/notification_thumbnail" />
+
+    <!-- Rating -->
+    <TextView
+        android:id="@+id/notification_rating"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/rating"
+        android:layout_below="@+id/notification_no"
+        android:layout_alignLeft="@+id/notification_no"
+        android:layout_alignStart="@+id/notification_no" />
+
+    <!-- Genre -->
+    <TextView
+        android:id="@+id/catagories_include"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/catagories_include"
+        android:textSize="@dimen/catagories_include"
+        android:layout_alignBottom="@+id/notification_thumbnail"
+        android:layout_toRightOf="@+id/notification_thumbnail"
+        android:layout_toEndOf="@+id/notification_thumbnail" />
+
+    <!-- Release Year -->
+    <TextView
+        android:id="@+id/notification_releaseYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/notificationYear"
+        android:textSize="@dimen/notificationYear" />
+
+</RelativeLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_row_selector"
+    android:padding="8dp" >
+
+    <!-- Thumbnail Image -->
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/favourit_thumbnail"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="8dp" />
+
+    <!-- Movie Title -->
+    <TextView
+        android:id="@+id/favourit_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/favourit_genre"
+        android:layout_alignStart="@+id/favourit_genre" />
+
+    <!-- Rating -->
+    <TextView
+        android:id="@+id/favourit_rating"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/favourit_title"
+        android:layout_marginTop="1dip"
+        android:layout_toRightOf="@+id/favourit_thumbnail"
+        android:textSize="@dimen/rating" />
+
+    <!-- Genre -->
+    <TextView
+        android:id="@+id/favourit_genre"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/genre"
+        android:textSize="13dp"
+        android:layout_marginBottom="22dp"
+        android:layout_alignBottom="@+id/favourit_thumbnail"
+        android:layout_alignLeft="@+id/favourit_rating"
+        android:layout_alignStart="@+id/favourit_rating" />
+
+    <!-- Release Year -->
+    <TextView
+        android:id="@+id/favourit_releaseYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="13dp" />
+
+</RelativeLayout>
