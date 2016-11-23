@@ -73,8 +73,20 @@ public class DashboardActivity extends AppCompatActivity
     public final ThreadLocal<ImageView> gif_banner = new ThreadLocal<>();
     private GoogleApiClient client;
     int userRankValue = 2;
+    public double f = 0;
+    public double k = 0;
+    public double early_f = 0;
+    public double early_k = 0;
+    public static String start_time = "2015-12-09-10:06:20";
+    public static String end_time = "2015-12-09-10:07:32";
+    public static String[] longi_array;
+    public static String[] lati_array;
+    public String usernamee = "";
+    public String mainemail = "";
+    public String timeDuration = "";
+    private Button btnrealtime;
+    private Button btnselecttime;
 
-    Button btnlastlocation;
 
     private static String KEY_EMAIL = "email";
 
@@ -91,9 +103,9 @@ public class DashboardActivity extends AppCompatActivity
         googleMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
 
 
-        btnlastlocation = (Button) findViewById(R.id.btn_realtime);
+        btnrealtime = (Button) findViewById(R.id.btn_realtime);
 
-
+        btnselecttime = (Button) findViewById(R.id.btn_select_time);
 
 
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -176,7 +188,7 @@ public class DashboardActivity extends AppCompatActivity
         }
 
 
-        btnlastlocation.setOnClickListener(new View.OnClickListener() {
+        btnrealtime.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 // Timer myTimer = new Timer();
 //                if (cbrealtime_update==true) {
@@ -191,6 +203,17 @@ public class DashboardActivity extends AppCompatActivity
                 // }
             }
         });
+
+
+
+        btnselecttime.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(view.getContext(), SelectTimePeriodActivity.class);
+                startActivityForResult(myIntent, 0);
+            }
+        });
+
+
 
 
     }
@@ -465,6 +488,24 @@ public class DashboardActivity extends AppCompatActivity
         }
         //myListPref.setText(myListPreference);
 
+
+        if (longi_array == null) {
+            System.out.println("Select TimePeriod First");
+        } else {
+            for (int m = 0; m < longi_array.length; m++) {
+                double f = Double.parseDouble(longi_array[m]);
+                double k = Double.parseDouble(lati_array[m]);
+                System.out.println(f);
+                System.out.println(k);
+                LatLng suwarapola = new LatLng((k / 1000000), (f / 1000000));
+                googleMap.addMarker(new MarkerOptions().position(suwarapola).title("Hello world").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_dot)));
+            }
+        }
+
+
+
+
+
     }
 
     @Override
@@ -577,6 +618,10 @@ public class DashboardActivity extends AppCompatActivity
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
+
+
+
+
     private void  getDataRealtime() {
         String url = ("http://www.workspike.com/trakit/APIs/get_data_api/realtime_location.php?tb_name=d865904028323530");
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
@@ -584,7 +629,7 @@ public class DashboardActivity extends AppCompatActivity
             public void onResponse(String response) {
                 // loading.dismiss();
                 System.out.println(response);
-                showJSON(response);
+                showJSON2(response);
             }
         },
                 new Response.ErrorListener() {
@@ -597,6 +642,8 @@ public class DashboardActivity extends AppCompatActivity
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
+
+
 
     public void showJSON(String response) {
         final String[] temp = {""};
@@ -707,6 +754,7 @@ public class DashboardActivity extends AppCompatActivity
     public void showJSON2(String response) {
         Double early_f = null;
                 Double early_k=null;
+        String vorp = "";
         String temp = "";
         String date = "";
         String fuel = "";

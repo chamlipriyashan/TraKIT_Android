@@ -38,28 +38,23 @@
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name"
-            />
+            android:label="@string/app_name" />
         <activity
             android:name=".DashboardActivity"
             android:label="@string/title_activity_dashboard"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".other_activities.TermsofserviceActivity"
             android:label="@string/title_activity_termsofservice"
@@ -123,7 +118,9 @@
         <service
             android:name=".LocationService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".SelectTimePeriodActivity"></activity>
     </application>
 
 </manifest>
