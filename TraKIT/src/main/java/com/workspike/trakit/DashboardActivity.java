@@ -292,6 +292,21 @@ public class DashboardActivity extends AppCompatActivity
                     .setNegativeButton(android.R.string.no, null).show();
 
             return true;
+        }else if (id == R.id.action_clear) {
+            googleMap.clear();
+            longi_array = null;
+            lati_array=null;
+//            if (longi_array == null) {
+//                System.out.println("Select TimePeriod First");
+//
+//            } else {
+//                for (int m = 0; m < longi_array.length; m++) {
+//                    double f = Double.parseDouble(longi_array[m]);
+//                    double k = Double.parseDouble(lati_array[m]);
+//                    LatLng suwarapola = new LatLng((k / 1000000), (f / 1000000));
+//                    googleMap.addMarker(new MarkerOptions().position(suwarapola).title("Hello world").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_dot)));
+//                }
+//            }
         }
 
         return super.onOptionsItemSelected(item);
