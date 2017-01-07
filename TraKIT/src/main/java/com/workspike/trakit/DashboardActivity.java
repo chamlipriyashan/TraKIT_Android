@@ -67,7 +67,7 @@ public class DashboardActivity extends AppCompatActivity
     private static final String TAG = DashboardActivity.class.getSimpleName();
     private ProgressDialog loading;
     boolean cbrealtime_update = true;
-    GoogleMap googleMap;
+    static GoogleMap googleMap;
     private ProgressDialog pDialog;
     public String fullname, email,fb_id;
     public final ThreadLocal<ImageView> gif_banner = new ThreadLocal<>();
@@ -86,7 +86,8 @@ public class DashboardActivity extends AppCompatActivity
     public String timeDuration = "";
     private Button btnrealtime;
     private Button btnselecttime;
-
+    private TextView tv_dashboard_status;
+    Button btntemperature;
 
     private static String KEY_EMAIL = "email";
 
@@ -104,8 +105,9 @@ public class DashboardActivity extends AppCompatActivity
 
 
         btnrealtime = (Button) findViewById(R.id.btn_realtime);
-
+        tv_dashboard_status=(TextView) findViewById(R.id.tv_dashboard_status);
         btnselecttime = (Button) findViewById(R.id.btn_select_time);
+        btntemperature = (Button) findViewById(R.id.btn_temperature);
 
 
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -188,19 +190,34 @@ public class DashboardActivity extends AppCompatActivity
         }
 
 
+
+
         btnrealtime.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View view) {
-                // Timer myTimer = new Timer();
-//                if (cbrealtime_update==true) {
-//                    myTimer.schedule(new TimerTask() {
-//                        @Override
-//                        public void run() {
-//                            UpdateGUI();
-//                        }
-//                    }, 0, 4000);
-//                } else {
-                getDataRealtime();
-                // }
+              boolean  cbrealtimelocation = loadSavedPreferences("show_realtime_location");
+                if(cbrealtimelocation==false) {
+                    startService(new Intent(DashboardActivity.this, Realtime_Location_Service.class));
+                    savePreferences("show_realtime_location", true);
+                    System.out.println("Realtime ON");
+                    tv_dashboard_status.setText("Realtime ON");
+                    Toast toast= Toast.makeText(getApplicationContext(),
+                            "Serrvice Started", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP| Gravity.CENTER_HORIZONTAL, 0, 0);
+                    toast.show();
+
+
+                }else if(cbrealtimelocation==true){
+                    savePreferences("show_realtime_location", false);
+                    stopService(new Intent(DashboardActivity.this, Realtime_Location_Service.class));
+                    System.out.println("Realtime OFF");
+                    Toast toast= Toast.makeText(getApplicationContext(),
+                            "Serrvice Closed", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP| Gravity.CENTER_HORIZONTAL, 0, 0);
+                    toast.show();
+                    tv_dashboard_status.setText("Realtime OFF");
+                    //status.setTextColor(200);
+                }
             }
         });
 
@@ -209,10 +226,20 @@ public class DashboardActivity extends AppCompatActivity
         btnselecttime.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), SelectTimePeriodActivity.class);
-                startActivityForResult(myIntent, 0);
+               startActivityForResult(myIntent, 0);
+
             }
         });
 
+
+
+        btntemperature.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent tempIntent = new Intent(view.getContext(), TemperatureActivity.class);
+                startActivityForResult(tempIntent, 0);
+
+            }
+        });
 
 
 
@@ -479,7 +506,7 @@ public class DashboardActivity extends AppCompatActivity
         System.out.println("aneeeeeyakoooooooooooooooooooooooo");
         System.out.println("aneeeeeyakoooooooooooooooooooooooo");
        // SharedPreferences preferences = getSharedPreferences("your_file_name", MODE_PRIVATE);
-        Toast.makeText(this, "onResume", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "onResume", Toast.LENGTH_LONG).show();
         SharedPreferences myPreference= PreferenceManager.getDefaultSharedPreferences(this);
         String myListPreference = myPreference.getString("map_type_pref", "default choice");
         System.out.println(myListPreference);
@@ -637,27 +664,6 @@ public class DashboardActivity extends AppCompatActivity
 
 
 
-    private void  getDataRealtime() {
-        String url = ("http://www.workspike.com/trakit/APIs/get_data_api/realtime_location.php?tb_name=d865904028323530");
-        StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                // loading.dismiss();
-                System.out.println(response);
-                showJSON2(response);
-            }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(DashboardActivity.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();///dont put this because it will crach the app
-                    }
-                });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-    }
-
 
 
     public void showJSON(String response) {
@@ -764,6 +770,27 @@ public class DashboardActivity extends AppCompatActivity
 
     }
 
+    private void  getDataRealtime() {
+        String url = ("http://www.workspike.com/trakit/APIs/get_data_api/realtime_location.php?tb_name=d865904028323530");
+        StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                // loading.dismiss();
+                System.out.println(response);
+                showJSON2(response);
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(DashboardActivity.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();///dont put this because it will crach the app
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
 
 
     public void showJSON2(String response) {
@@ -805,6 +832,14 @@ public class DashboardActivity extends AppCompatActivity
         }
     }
 
+
+
+    private void savePreferences(String key, boolean value) {
+        SharedPreferences preferences = getSharedPreferences("your_file_name", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(key, value);
+        editor.apply();
+    }
 
     private void hidePDialog() {
         if (pDialog != null) {

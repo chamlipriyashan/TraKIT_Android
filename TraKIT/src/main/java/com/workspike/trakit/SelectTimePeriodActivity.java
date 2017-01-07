@@ -67,8 +67,12 @@ public class SelectTimePeriodActivity extends AppCompatActivity implements View.
         btnendDatePicker.setOnClickListener(this);
         btnendTimePicker.setOnClickListener(this);
 
-
-
+        txtstartDate.setText("2016-11-22");
+        txtendDate.setText("2016-11-23");
+        txtstartTime.setText("6:15 am");
+        txtendTime.setText("6:15 am");
+        DashboardActivity.start_time=("2016-11-21"+"-6:00");
+        DashboardActivity.end_time=("2016-11-23"+"-6:00");
         btntracklocation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 getData();
@@ -270,20 +274,6 @@ public class SelectTimePeriodActivity extends AppCompatActivity implements View.
                     }, mHour, mMinute, false);
             timePickerDialog.show();
         }
-
-        //DashboardActivity.start_time=(startdate+"-"+starttime);
-
-        //System.out.println(startdate+"-"+starttime);
-      //  System.out.println(startdate+starttime);
-       // System.out.println(startdate+starttime);
-
-
-       // DashboardActivity.end_time=enddate+"-"+endtime;
-
-      //  System.out.println(enddate+"-"+endtime);
-       // System.out.println(enddate+endtime);
-        //System.out.println(enddate+endtime);
-
 
     }
 }

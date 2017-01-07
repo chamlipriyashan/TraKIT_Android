@@ -65,17 +65,7 @@ public class PutMeOnlineActivity extends AppCompatActivity {
                     }
                 }
             });
-
-
-
-
-
-
     }
-
-
-
-
     private void savePreferences(String key, boolean value) {
         SharedPreferences preferences = getSharedPreferences("your_file_name", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
@@ -92,15 +82,4 @@ public class PutMeOnlineActivity extends AppCompatActivity {
         return checkBoxValue;
 
     }
-
-
-
-
-
-
-
-
-
-
-
 }

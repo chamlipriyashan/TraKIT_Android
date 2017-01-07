@@ -52,8 +52,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.lang.Thread.sleep;
-
 /**
  * Created by Chamli Priyashan on 7/5/2016.
  */
@@ -71,7 +69,7 @@ public class LoginActivity extends Activity {
     public static String lastname;
     public static String email;
     public static String gender;
-    public static String birthday;
+    public static String birthday="01/31/1980";
     public static String phone_no="0776000697";
     public static String phone_imei="147852369745236";
     public static String profileImgUrl;
@@ -107,9 +105,14 @@ public class LoginActivity extends Activity {
         System.out.println(loggedin_status);
         if (loggedin_status == true) {
             System.out.println("start main activity");
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             AddmetoDB();
             try {
-                Thread.sleep(10);
+                Thread.sleep(300);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -289,7 +292,7 @@ public class LoginActivity extends Activity {
 
                 AddmetoDB();
                 try {
-                    Thread.sleep(10);
+                    Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -381,37 +384,66 @@ public class LoginActivity extends Activity {
     private void AddmetoDB(){
 
         final String ADDmetoDB_URL = "http://www.workspike.com/trakit/APIs/login_api/add_user_to_db.php";
+        final String f_name = loadSavedstringPreferences("NAME", "DEFAULT");
+        final String email2 = loadSavedstringPreferences("EMAIL", "DEFAULT");
+        final String fb_id = loadSavedstringPreferences("ID", "DEFAULT");
+        profileImgUrl= loadSavedimagePreferences();
+        System.out.println(loadSavedstringPreferences("FIRSTNAME", "DEFAULT"));
+        System.out.println(loadSavedstringPreferences("LASTNAME", "DEFAULT"));
+        System.out.println(loadSavedstringPreferences("NAME", "DEFAULT"));
+
+
         System.out.println("adding user TO MYSQL DATABASE");
-        System.out.println(id);
+        System.out.println("sTARTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT    DEBUGGGGGG....................");
+        System.out.println(profileImgUrl);
+        System.out.println(fb_id);
+        System.out.println(email2);
+        System.out.println(f_name);
+
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, ADDmetoDB_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        System.out.println(response);
-                        String subresponse=response.substring(0,30);
-                        System.out.println(subresponse);
-                        Toast.makeText(LoginActivity.this,subresponse,Toast.LENGTH_LONG).show();
+                        System.out.println("xxxxx");
+                        System.out.println(response.length());
+
+                        String subresponse=response.substring(0,response.length());
+                        System.out.println(subresponse.toString()+"xxxxx");
+                        System.out.println(subresponse.toString()+"xxxxx");
+                        System.out.println("sUCSSSSSSSSSS    DEBUGGGGGG....................");
+                        Toast.makeText(LoginActivity.this,response.toString(),Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        System.out.println(error.toString());
                         Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG).show();
                     }
                 }){
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
-
-                params.put(KEY_FB_ID,id);
-                params.put(KEY_NAME, name);
-                params.put(KEY_EMAIL, email);
+                       //uid
+                params.put(KEY_FB_ID,fb_id);
+                params.put(KEY_NAME, f_name);
+                params.put(KEY_EMAIL, email2);
                 params.put(KEY_PHONE,phone_no);
                 params.put(KEY_PHONE_IMEI,phone_imei);
                 params.put(KEY_PROF_URL, profileImgUrl);
                 params.put(KEY_MYDEVICES, "default");
                 params.put(KEY_FEVDEVICES, "default");
-                System.out.println(params);
+                System.out.println(params.toString());
+                System.out.println(params.toString());
+                System.out.println(params.toString());
+                System.out.println(params.toString());
+                System.out.println(params.toString());
+                System.out.println(params.toString());
+
+
+
+                System.out.println("  DEBUGGGGGG....................");
                 return params;
             }
 
@@ -424,6 +456,21 @@ public class LoginActivity extends Activity {
 
 
 
+
+    private String loadSavedimagePreferences() {
+        SharedPreferences preferences = getSharedPreferences("your_file_name", MODE_PRIVATE);
+        // boolean checkBoxValue = preferences.getBoolean("CheckBox_Value", false);
+        String string = preferences.getString("PROFILEIMAGE", "http://goo.gl/gEgYUd");
+        System.out.println("returened image=" + "PROFILEIMAGE" + "value=" + string);
+        return string;
+    }
+
+    private String loadSavedstringPreferences(String key, String dummy) {
+        SharedPreferences preferences = getSharedPreferences("your_file_name", MODE_PRIVATE);
+        String string = preferences.getString(key, dummy);
+        System.out.println("returened string=" + key + "value=" + string);
+        return string;
+    }
 
 
 }

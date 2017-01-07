@@ -19,29 +19,50 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         tools:layout="@layout/activity_dashboard" />
 
+    <TextView
+        android:text="STATUS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_dashboard_status"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <Button
+        android:text="Temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_select_time"
+        android:layout_marginTop="16dp"
+        android:id="@+id/btn_temperature"
+        android:layout_alignLeft="@+id/btn_select_time"
+        android:layout_alignStart="@+id/btn_select_time"
+        android:layout_alignRight="@+id/btn_select_time"
+        android:layout_alignEnd="@+id/btn_select_time" />
+
     <Button
         android:text="Show Realtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginTop="109dp"
+        android:id="@+id/btn_realtime"
+        android:layout_below="@+id/tv_dashboard_status"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="93dp"
-        android:id="@+id/btn_realtime" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="select_time_period"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:id="@+id/btn_select_time"
         android:layout_below="@+id/btn_realtime"
         android:layout_alignLeft="@+id/btn_realtime"
         android:layout_alignStart="@+id/btn_realtime"
-        android:layout_marginLeft="21dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="76dp"
-        android:id="@+id/btn_select_time" />
+        android:layout_alignRight="@+id/btn_realtime"
+        android:layout_alignEnd="@+id/btn_realtime" />
 
 
 </RelativeLayout>

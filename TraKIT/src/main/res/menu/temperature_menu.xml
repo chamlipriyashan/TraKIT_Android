@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/item_dateselect"
+        android:icon="@drawable/calendar48"
+        android:title="Select period"
+        app:showAsAction="always">
+    </item>
+    <item
+        android:id="@+id/item_timeselect"
+        android:icon="@drawable/clock48"
+        app:showAsAction="ifRoom|withText"
+        android:title="Profile">
+    </item>
+</menu>

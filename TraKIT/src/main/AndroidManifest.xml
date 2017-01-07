@@ -10,7 +10,7 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -19,6 +19,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity">
@@ -120,7 +121,17 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".SelectTimePeriodActivity"></activity>
+        <activity android:name=".SelectTimePeriodActivity" />
+
+        <service
+            android:name=".Realtime_Location_Service"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".TemperatureActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".BrowseDeviceActivity"></activity>
     </application>
 
 </manifest>
