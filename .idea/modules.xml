@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TraKIT/TraKIT.iml" filepath="$PROJECT_DIR$/TraKIT/TraKIT.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TraKIT Beta.iml" filepath="$PROJECT_DIR$/TraKIT Beta.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TraKIT_Android.iml" filepath="$PROJECT_DIR$/TraKIT_Android.iml" />
     </modules>
   </component>
 </project>
