@@ -28,6 +28,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import static com.workspike.trakit.PutMeOnlineActivity.PhoneIMEI;
+
 public class LocationService extends Service {
 
     public static final String BROADCAST_ACTION = "Hello World";
@@ -174,19 +176,25 @@ public class LocationService extends Service {
                 boolean y = loadSavedPreferences("put_me_online");
                 System.out.println("MY STATUSSSSSSSSS   MAIN   "+y);
                 if(y==true){
+                   // TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
                     TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-                    String IMEI =telephonyManager.getDeviceId();
-                      double lati=loc.getLatitude();
-                     double longi=loc.getLongitude();
-                      double alti=loc.getAltitude();
+
+
+
+                    PhoneIMEI =telephonyManager.getDeviceId();
+                    String IMEI = PhoneIMEI;
+                    float lati=(float) loc.getLatitude();
+                    float longi=(float)loc.getLongitude();
+                    double alti=loc.getAltitude();
                     double speed=loc.getSpeed();
                     Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + lati + "\nLong: " + longi+" alti "+alti, Toast.LENGTH_LONG).show();
-                   // String url="http://workspike.com/trakit/APIs/put_data_api/put_gps_data.php?temp=44&date=1608251111&fuel=1544456&lati=713656&longi=12565436&alti=102453&satellite=10&speed=131&vorp=p&other=12254&tb_name=p"+IMEI  ;
+                    // String url="http://workspike.com/trakit/APIs/put_data_api/put_gps_data.php?temp=44&date=1608251111&fuel=1544456&lati=713656&longi=12565436&alti=102453&satellite=10&speed=131&vorp=p&other=12254&tb_name=p"+IMEI  ;
                     //String url = ("http://workspike.com/trakit/APIs/put_data_api/put_gps_data.php?id=100&temp="+100+"&date="+currentDateandTime+"&fuel="+10+"&lati="+lattt+"&longi="+longii+"&alti="+myalt+"&satellite="+7+"&speed="+myspeed+"&other=000");
                     String url ="http://workspike.com/trakit/APIs/put_data_api/put_gps_data.php?temp="+100+"&date="+1+"&fuel="+10+"&lati="+lati+"&longi="+longi+"&alti="+alti+"&satellite="+7+"&speed="+speed+"&other="+000+"&tb_name=p"+IMEI;//p is used to identyfy its a phone
                     System.out.println(url);
                     accesURL(url);
-                    System.out.println(telephonyManager.getDeviceId());
+                    System.out.println(PhoneIMEI);
+                    System.out.println(PhoneIMEI);
                 }
 
 

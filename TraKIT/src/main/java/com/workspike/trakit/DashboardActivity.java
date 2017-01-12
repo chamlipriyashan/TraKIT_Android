@@ -7,6 +7,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,11 +21,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -60,6 +63,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static com.workspike.trakit.PutMeOnlineActivity.PhoneIMEI;
+
 /////testtttt
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
@@ -88,7 +94,7 @@ public class DashboardActivity extends AppCompatActivity
     private Button btnselecttime;
     private TextView tv_dashboard_status;
     Button btntemperature;
-
+    String PhoneIMEI;
     private static String KEY_EMAIL = "email";
 
     @Override
@@ -165,6 +171,29 @@ public class DashboardActivity extends AppCompatActivity
                 getSystemService(NOTIFICATION_SERVICE);
 
         Intent intent = new Intent(this, RegisterActivity.class);
+
+
+
+
+        int permissionCheck = ContextCompat.checkSelfPermission(DashboardActivity.this, Manifest.permission.READ_PHONE_STATE);
+
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(DashboardActivity.this, new String[]{Manifest.permission.READ_PHONE_STATE},1);
+        } else {
+            //TODO
+            TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+            PhoneIMEI =telephonyManager.getDeviceId();
+            System.out.println(PhoneIMEI);
+            System.out.println(PhoneIMEI);
+            System.out.println(PhoneIMEI);
+            System.out.println(PhoneIMEI);
+            System.out.println(PhoneIMEI);
+            System.out.println(PhoneIMEI);
+
+            System.out.println(PhoneIMEI);
+            System.out.println(PhoneIMEI);
+
+        }
 
         PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent, 0);
 
@@ -529,7 +558,9 @@ public class DashboardActivity extends AppCompatActivity
             System.out.println("Default map is loaded");
         }
         //myListPref.setText(myListPreference);
+        LatLng Colombo = new LatLng(6.8018, 79.9227);
 
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Colombo, 12));
 
         if (longi_array == null) {
             System.out.println("Select TimePeriod First");
@@ -573,7 +604,7 @@ public class DashboardActivity extends AppCompatActivity
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(16.0f));
+        //googleMap.animateCamera(CameraUpdateFactory.zoomTo(16.0f));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -585,17 +616,21 @@ public class DashboardActivity extends AppCompatActivity
             return;
         }
         googleMap.setMyLocationEnabled(true);
-        LatLng Colombo = new LatLng(6.9344, 79.85);
-        try {
-            Thread.sleep(10);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        LatLng Colombo = new LatLng(6.9344, 86.85);
+//        try {
+//            Thread.sleep(10);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         //googleMap.moveCamera(CameraUpdateFactory.newLatLng(suwarapola), 12.0f);
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Colombo, 11));
+        //googleMap.clear();
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Colombo, 12));
+        //LatLng sydney = new LatLng(-34, 151);
+        //googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+       // googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
 
-        googleMap.clear();
+
 
 
         SharedPreferences myPreference= PreferenceManager.getDefaultSharedPreferences(this);
@@ -620,10 +655,7 @@ public class DashboardActivity extends AppCompatActivity
             System.out.println("Default map is loaded");
         }
         //googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        System.out.println("Latitude:  Longitude:");
-        System.out.println("Latitude:  Longitude:");
-        System.out.println("Latitude:  Longitude:");
-        System.out.println("Latitude:  Longitude:");
+
 
 
 

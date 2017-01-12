@@ -35,7 +35,7 @@ public class Realtime_Location_Service extends Service {
     public static final String BROADCAST_ACTION = "Hello World";
     private static final int TWO_MINUTES = 1000 * 60 * 2;
     public LocationManager locationManager;
-    public LocationService.MyLocationListener listener;
+   // public LocationService.MyLocationListener listener;
     public Location previousBestLocation = null;
     Intent intent;
     int counter = 0;

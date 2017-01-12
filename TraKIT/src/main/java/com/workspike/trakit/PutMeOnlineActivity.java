@@ -1,9 +1,15 @@
 package com.workspike.trakit;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +20,7 @@ public class PutMeOnlineActivity extends AppCompatActivity {
     private Button btn_putmeonline;
     private TextView online_text;
     private TextView status;
+    static String PhoneIMEI;
     boolean x,y;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +47,26 @@ public class PutMeOnlineActivity extends AppCompatActivity {
                 public void onClick(View view) {
                    y = loadSavedPreferences("put_me_online");
                     if(y==false) {
+                        ActivityCompat.requestPermissions(PutMeOnlineActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                        ActivityCompat.requestPermissions(PutMeOnlineActivity.this,new String[]{Manifest.permission.READ_PHONE_STATE}, 1);
+
+                        int permissionCheck = ContextCompat.checkSelfPermission(PutMeOnlineActivity.this, Manifest.permission.READ_PHONE_STATE);
+
+                        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(PutMeOnlineActivity.this, new String[]{Manifest.permission.READ_PHONE_STATE},1);
+                        } else {
+                            //TODO
+                            TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+                            PhoneIMEI =telephonyManager.getDeviceId();
+                            System.out.println(PhoneIMEI);
+                            System.out.println(PhoneIMEI);
+
+                        }
+
+                       // TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+                        //PhoneIMEI =telephonyManager.getDeviceId();
+
+
                         startService(new Intent(PutMeOnlineActivity.this, LocationService.class));
                         savePreferences("put_me_online", true);
                         System.out.println("Im ONLINE");
