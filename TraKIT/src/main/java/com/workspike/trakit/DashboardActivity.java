@@ -184,14 +184,7 @@ public class DashboardActivity extends AppCompatActivity
             TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
             PhoneIMEI =telephonyManager.getDeviceId();
             System.out.println(PhoneIMEI);
-            System.out.println(PhoneIMEI);
-            System.out.println(PhoneIMEI);
-            System.out.println(PhoneIMEI);
-            System.out.println(PhoneIMEI);
-            System.out.println(PhoneIMEI);
 
-            System.out.println(PhoneIMEI);
-            System.out.println(PhoneIMEI);
 
         }
 
