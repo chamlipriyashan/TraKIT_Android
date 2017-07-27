@@ -36,7 +36,7 @@ public class BrowsVehicleActivity extends AppCompatActivity implements AdapterVi
 
     // Movies json url
    // private static final String url = "http://api.androidhive.info/json/movies.json";
-    private static final String url = "http://workspike.com/trakit/APIs/get_data_api/brows_vehicles.json";
+    private static final String url = "http://lucidchamli.com/trakit/APIs/get_data_api/brows_vehicles.json";
     private ProgressDialog pDialog;
     private List<Vehicle> vehicleList = new ArrayList<Vehicle>();
     private ListView listView;

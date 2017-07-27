@@ -68,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                String url = "http://www.trakit.com";
+                String url = "http://www.Lucidchamli.com";
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 i.setPackage("com.android.chrome");

@@ -91,12 +91,7 @@ public class Realtime_Location_Service extends Service {
                // Toast.LENGTH_SHORT).show();
                // Log.i("EOH",String.valueOf(loc.getLatitude()));
                 System.out.println("realtime location is working");
-                System.out.println("realtime location is working");
-                System.out.println("realtime location is working");
-                System.out.println("realtime location is working");
-                System.out.println("realtime location is working");
-                System.out.println("realtime location is working");
-                System.out.println("realtime location is working");
+
                 getDataRealtime();
             }
         };
@@ -119,7 +114,7 @@ public void cancelimer(){
 
 
     private void  getDataRealtime() {
-        String url = ("http://www.workspike.com/trakit/APIs/get_data_api/realtime_location.php?tb_name=d865904028323530");
+        String url = ("http://www.lucidchamli.com/trakit/APIs/get_data_api/realtime_location.php?tb_name=d865904028323530");
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

@@ -383,7 +383,7 @@ public class LoginActivity extends Activity {
 
     private void AddmetoDB(){
 
-        final String ADDmetoDB_URL = "http://www.workspike.com/trakit/APIs/login_api/add_user_to_db.php";
+        final String ADDmetoDB_URL = "http://www.lucidchamli.com/trakit/APIs/login_api/add_user_to_db.php";
         final String f_name = loadSavedstringPreferences("NAME", "DEFAULT");
         final String email2 = loadSavedstringPreferences("EMAIL", "DEFAULT");
         final String fb_id = loadSavedstringPreferences("ID", "DEFAULT");
@@ -435,11 +435,7 @@ public class LoginActivity extends Activity {
                 params.put(KEY_MYDEVICES, "default");
                 params.put(KEY_FEVDEVICES, "default");
                 System.out.println(params.toString());
-                System.out.println(params.toString());
-                System.out.println(params.toString());
-                System.out.println(params.toString());
-                System.out.println(params.toString());
-                System.out.println(params.toString());
+
 
 
 

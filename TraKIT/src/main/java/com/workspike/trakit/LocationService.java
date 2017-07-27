@@ -190,7 +190,7 @@ public class LocationService extends Service {
                     Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + (lati*1000000 )+ "\nLong: " + (longi*1000000)+" alti "+alti, Toast.LENGTH_LONG).show();
                     // String url="http://workspike.com/trakit/APIs/put_data_api/put_gps_data.php?temp=44&date=1608251111&fuel=1544456&lati=713656&longi=12565436&alti=102453&satellite=10&speed=131&vorp=p&other=12254&tb_name=p"+IMEI  ;
                     //String url = ("http://workspike.com/trakit/APIs/put_data_api/put_gps_data.php?id=100&temp="+100+"&date="+currentDateandTime+"&fuel="+10+"&lati="+lattt+"&longi="+longii+"&alti="+myalt+"&satellite="+7+"&speed="+myspeed+"&other=000");
-                    String url ="http://workspike.com/trakit/APIs/put_data_api/put_gps_data.php?temp="+100+"&date="+1+"&fuel="+10+"&lati="+(lati*1000000 )+"&longi="+(longi*1000000)+"&alti="+alti+"&satellite="+7+"&speed="+speed+"&other="+000+"&tb_name=p"+IMEI;//p is used to identyfy its a phone
+                    String url ="http://lucidchamli.com/trakit/APIs/put_data_api/put_gps_data.php?temp="+100+"&date="+1+"&fuel="+10+"&lati="+(lati*1000000 )+"&longi="+(longi*1000000)+"&alti="+alti+"&satellite="+7+"&speed="+speed+"&other="+000+"&tb_name=p"+IMEI;//p is used to identyfy its a phone
                     System.out.println(url);
                     accesURL(url);
                     System.out.println(PhoneIMEI);

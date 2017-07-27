@@ -36,8 +36,8 @@ public class BrowseDeviceActivity extends AppCompatActivity implements AdapterVi
 
     // Movies json url
     // private static final String url = "http://api.androidhive.info/json/movies.json";
-    private static final String url = "http://workspike.com/trakit/APIs/get_data_api/brows_vehicles.json";
-    private static final String phpurl = "http://workspike.com/trakit/APIs/get_data_api/brows_vehicles.php?fbid=1275166865850228";
+    private static final String url = "http://lucidchamli.com/trakit/APIs/get_data_api/brows_vehicles.json";
+    private static final String phpurl = "http://lucidchamli.com/trakit/APIs/get_data_api/brows_vehicles.php?fbid=1275166865850228";
     private ProgressDialog pDialog;
    // private List<Vehicle> vehicleList = new ArrayList<Vehicle>();
     private List<Device> mydevicesList = new ArrayList<Device>();

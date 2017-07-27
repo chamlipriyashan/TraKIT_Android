@@ -37,7 +37,7 @@ public class Brows_NotificationsActivity extends AppCompatActivity implements Ad
 
     // Movies json url
     // private static final String url = "http://api.androidhive.info/json/movies.json";
-    private static final String url = "http://workspike.com/trakit/APIs/get_data_api/brows_notifications.json";
+    private static final String url = "http://lucidchamli.com/trakit/APIs/get_data_api/brows_notifications.json";
     private ProgressDialog pDialog;
     private List<Notification> notificationList = new ArrayList<Notification>();
     private ListView listView;

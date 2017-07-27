@@ -521,12 +521,7 @@ public class DashboardActivity extends AppCompatActivity
         System.out.println("aneeeeeyakoooooooooooooooooooooooo");
         System.out.println("aneeeeeyakoooooooooooooooooooooooo");
         System.out.println("aneeeeeyakoooooooooooooooooooooooo");
-        System.out.println("aneeeeeyakoooooooooooooooooooooooo"); System.out.println("aneeeeeyakoooooooooooooooooooooooo");
-        System.out.println("aneeeeeyakoooooooooooooooooooooooo");
-        System.out.println("aneeeeeyakoooooooooooooooooooooooo");
-        System.out.println("aneeeeeyakoooooooooooooooooooooooo"); System.out.println("aneeeeeyakoooooooooooooooooooooooo");
-        System.out.println("aneeeeeyakoooooooooooooooooooooooo");
-        System.out.println("aneeeeeyakoooooooooooooooooooooooo");
+
        // SharedPreferences preferences = getSharedPreferences("your_file_name", MODE_PRIVATE);
         //Toast.makeText(this, "onResume", Toast.LENGTH_LONG).show();
         SharedPreferences myPreference= PreferenceManager.getDefaultSharedPreferences(this);
@@ -534,11 +529,11 @@ public class DashboardActivity extends AppCompatActivity
         System.out.println(myListPreference);
         if("MAP_TYPE_SATELLITE".equals(myListPreference) ) {
             googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-            System.out.println("sateliteeeeeeeeee");
+            System.out.println("satelite Map");
 
         }else if("MAP_TYPE_NORMAL".equals(myListPreference)){
             googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-            System.out.println("Normallllllllllllllllll");
+            System.out.println("Normal Map");
 
         }else if("MAP_TYPE_TERRAIN".equals(myListPreference)){
             googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
@@ -631,11 +626,11 @@ public class DashboardActivity extends AppCompatActivity
         System.out.println(myListPreference);
         if("MAP_TYPE_SATELLITE".equals(myListPreference) ) {
             googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-            System.out.println("sateliteeeeeeeeee");
+            System.out.println("satelite Map");
 
         }else if("MAP_TYPE_NORMAL".equals(myListPreference)){
             googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-            System.out.println("Normallllllllllllllllll");
+            System.out.println("Normal Map");
 
         }else if("MAP_TYPE_TERRAIN".equals(myListPreference)){
             googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
@@ -703,7 +698,7 @@ public class DashboardActivity extends AppCompatActivity
         final String[] other = {""};
         final String[] vorp= {""};
 
-        String url = ("http://www.workspike.com/trakit/APIs/get_data_api/realtime_location.php?tb_name=d865904028323530");
+        String url = ("http://www.lucidchamli.com/trakit/APIs/get_data_api/realtime_location.php?tb_name=d865904028323530");
         ProgressDialog pDialog = new ProgressDialog(DashboardActivity.this);
         // Showing progress dialog before making http request
         pDialog.setMessage("Loading...");
@@ -796,7 +791,7 @@ public class DashboardActivity extends AppCompatActivity
     }
 
     private void  getDataRealtime() {
-        String url = ("http://www.workspike.com/trakit/APIs/get_data_api/realtime_location.php?tb_name=d865904028323530");
+        String url = ("http://www.lucidchamli.com/trakit/APIs/get_data_api/realtime_location.php?tb_name=d865904028323530");
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
